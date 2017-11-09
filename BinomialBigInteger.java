@@ -1,5 +1,3 @@
-package advanced_class7_DP4;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -38,7 +36,7 @@ public class BinomialBigInteger {
 				headsnMax = i;
 				max = P_gB_cA;
 			}
-			System.out.println("headsn: " + i + " P_gB_cA: " + P_gB_cA +" max: "+ max +" max_headsn "+ headsnMax);
+			// System.out.println("headsn: " + i + " P_gB_cA: " + P_gB_cA +" max: "+ max +" max_headsn "+ headsnMax);
 			res = res.add(P_gB_cA);
 		}
 		return res;
@@ -59,7 +57,7 @@ public class BinomialBigInteger {
 				headsnMax = i;
 				max = P_gA_cB;
 			}
-			System.out.println("headsn: " + i + " P_gA_cB: " + P_gA_cB + " max: " + max + " max_headsn "+ headsnMax);
+			// System.out.println("headsn: " + i + " P_gA_cB: " + P_gA_cB + " max: " + max + " max_headsn "+ headsnMax);
 			res = res.add(P_gA_cB);
 		}
 		return res;
@@ -67,21 +65,21 @@ public class BinomialBigInteger {
 	public static void main(String[] args) {
 		int flip = 1000;
 		int res = 0;
-		getPGuessACoinB(17);
-		getPGuessBCoinA(17);
-		// System.out.println(getThreshold_GuessB(10));
-		// System.out.println(getPGuessBCoinA(17));
-		// System.out.println(getPGuessACoinB(17));
-//		for (int i = 0; i < flip; i++) { // find smallest flip which satisfies  P (Guessn != Coin) ≤ 0.1
-//			BigDecimal P_gB_cA = getPGuessBCoinA(i);
-//			BigDecimal P_gA_cB = getPGuessACoinB(i);
-//			// System.out.println(getThreshold_GuessB(i));
-//			// System.out.println("failed this time");
-//			if (P_gB_cA.add(P_gA_cB).doubleValue() * 0.5 <= 0.1) {
-//				res = i;
-//				System.out.println(i);
-//				return;
-//			}
-//		}
+//		getPGuessACoinB(17); test for Q8
+//		getPGuessBCoinA(17); 
+		 System.out.println(getThreshold_GuessB(17));  // test for Q6
+		 System.out.println(getPGuessBCoinA(17));
+		 System.out.println(getPGuessACoinB(17));
+		for (int i = 0; i < flip; i++) { // find smallest flip which satisfies  P (Guessn != Coin) ≤ 0.1
+			BigDecimal P_gB_cA = getPGuessBCoinA(i);
+			BigDecimal P_gA_cB = getPGuessACoinB(i);
+			// System.out.println(getThreshold_GuessB(i));
+			// System.out.println("failed this time");
+			if (P_gB_cA.add(P_gA_cB).doubleValue() * 0.5 <= 0.1) {
+				res = i;
+				System.out.println(i);
+				return;
+			}
+		}
 	}
 }
